@@ -32,6 +32,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("safari")
+@SuppressWarnings("unused")
 public class DefaultSafariCapabilitiesProviderImpl implements ICapabilitiesProvider {
     public static final String CAPABILITIES_PROPERTY_PREFIX = "arma.driver.safari.capability.";
     public static final String CAPABILITIES_FILE_PROPERTY = "arma.driver.safari.capabilities.file";

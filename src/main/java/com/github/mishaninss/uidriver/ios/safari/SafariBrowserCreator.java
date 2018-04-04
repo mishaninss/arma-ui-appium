@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @Profile("safari")
+@SuppressWarnings("unused")
 public class SafariBrowserCreator implements IWebDriverCreator {
     private static final String COULD_NOT_START_SESSION_MESSAGE = "Could not start a new browser session";
 

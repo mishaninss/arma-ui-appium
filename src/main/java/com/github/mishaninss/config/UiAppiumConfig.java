@@ -23,6 +23,7 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 @Import(UiWdConfig.class)
+@SuppressWarnings("unused")
 public class UiAppiumConfig {
 
     @Bean @Qualifier(IWaitingDriver.QUALIFIER)
