@@ -59,7 +59,7 @@
     </repositories>
 
     <properties>
-        <aspectj.version>1.8.12</aspectj.version>
+        <aspectj.version>1.9.1</aspectj.version>
     </properties>
 
     <dependencies>
