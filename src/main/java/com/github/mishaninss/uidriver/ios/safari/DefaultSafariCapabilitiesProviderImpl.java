@@ -23,6 +23,7 @@ import com.github.mishaninss.uidriver.webdriver.DesiredCapabilitiesLoader;
 import com.github.mishaninss.uidriver.webdriver.ICapabilitiesProvider;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,8 @@ public class DefaultSafariCapabilitiesProviderImpl implements ICapabilitiesProvi
     @Autowired
     private DesiredCapabilitiesLoader capabilitiesLoader;
 
-    private DesiredCapabilities getSafariCapabilities(){
-        DesiredCapabilities caps = new DesiredCapabilities();
+    private MutableCapabilities getSafariCapabilities() {
+        MutableCapabilities caps = new DesiredCapabilities();
         caps.setCapability("automationName", "XCUITest");
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, properties.driver().deviceName);
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, properties.driver().platformName);
@@ -67,11 +68,11 @@ public class DefaultSafariCapabilitiesProviderImpl implements ICapabilitiesProvi
     }
 
     @Override
-    public DesiredCapabilities getCapabilities() {
-        DesiredCapabilities capabilities = getSafariCapabilities();
-        capabilities.merge(capabilitiesLoader.loadCapabilities(capabilitiesFile));
+    public MutableCapabilities getCapabilities() {
+        MutableCapabilities capabilities = getSafariCapabilities();
+        capabilities.merge(capabilitiesLoader.loadCapabilities(capabilitiesFile, DesiredCapabilities.class));
         capabilities.merge(capabilitiesLoader.loadEnvironmentProperties());
-        capabilities.merge(capabilitiesLoader.loadEnvironmentProperties(CAPABILITIES_PROPERTY_PREFIX));
+        capabilities.merge(capabilitiesLoader.loadEnvironmentProperties(CAPABILITIES_PROPERTY_PREFIX, DesiredCapabilities.class));
         reporter.debug("Desired capabilities: " + capabilities);
 
         return capabilities;

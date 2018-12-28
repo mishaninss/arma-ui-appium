@@ -16,19 +16,12 @@
 
 package com.github.mishaninss.config;
 
-import com.github.mishaninss.uidriver.interfaces.IWaitingDriver;
-import com.github.mishaninss.uidriver.ios.AppiumWaitingDriver;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import(UiWdConfig.class)
 @SuppressWarnings("unused")
 public class UiAppiumConfig {
-
-    @Bean @Qualifier(IWaitingDriver.QUALIFIER)
-    public IWaitingDriver waitingDriver(){
-        return new AppiumWaitingDriver();
-    }
 
 }
